@@ -7,8 +7,23 @@ import type {
   AdminUser,
 } from '../types';
 
-const RAW_API_URL = import.meta.env.VITE_API_URL || '/api';
-const API_BASE_URL = RAW_API_URL.replace(/\/+$/, '');
+const getNormalizedApiUrl = (): string => {
+  const envUrl = (import.meta.env.VITE_API_URL || '').trim();
+
+  // If no env variable set, use default relative proxy path '/api'
+  if (!envUrl) return '/api';
+
+  const cleanUrl = envUrl.replace(/\/+$/, '');
+
+  // If user provided backend domain (e.g. https://vanam-backend.onrender.com) without /api, append /api
+  if (cleanUrl.startsWith('http') && !cleanUrl.endsWith('/api')) {
+    return `${cleanUrl}/api`;
+  }
+
+  return cleanUrl;
+};
+
+const API_BASE_URL = getNormalizedApiUrl();
 
 // Admin Token Helpers
 const TOKEN_KEY = 'vanam_admin_token';

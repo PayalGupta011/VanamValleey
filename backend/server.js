@@ -65,14 +65,19 @@ app.get("/", (req, res) => {
   });
 });
 
-// API Routes
-app.use("/api/admin", adminRoutes);
-app.use("/api/admin/properties", adminPropertyRoutes);
-app.use("/api/properties", propertyRoutes);
-app.use("/api/enquiries", enquiryRoutes);
-app.use("/api/site-visits", siteVisitRoutes);
-app.use("/api/settings", settingsRoutes);
-app.use("/api/media", mediaRoutes);
+// API Routes (Mounted on both /api/* and direct /* for maximum deployment resilience)
+const registerAppRoutes = (prefix = "") => {
+  app.use(`${prefix}/admin/properties`, adminPropertyRoutes);
+  app.use(`${prefix}/admin`, adminRoutes);
+  app.use(`${prefix}/properties`, propertyRoutes);
+  app.use(`${prefix}/enquiries`, enquiryRoutes);
+  app.use(`${prefix}/site-visits`, siteVisitRoutes);
+  app.use(`${prefix}/settings`, settingsRoutes);
+  app.use(`${prefix}/media`, mediaRoutes);
+};
+
+registerAppRoutes("/api");
+registerAppRoutes(""); // Fallback in case frontend requests without /api prefix
 
 // 404 Route Handler
 app.use((req, res) => {
