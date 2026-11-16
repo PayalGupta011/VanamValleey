@@ -1,0 +1,170 @@
+/* Vanam Valley Global App Styling */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Luxury card hover */
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 75, 60, 0.12) !important;
+}
+
+.property-card:hover .property-img {
+  transform: scale(1.04);
+}
+
+/* Enquire nav button hover */
+.enquire-nav-btn:hover {
+  background-color: #003329 !important;
+  box-shadow: 0 4px 12px rgba(0, 75, 60, 0.25);
+}
+
+/* =========================================================================
+   LUXURY RANGE SLIDERS & PRESET CHIPS (Calculators Page)
+   ========================================================================= */
+.vanam-luxury-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  background: #E5DFC8;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.vanam-luxury-slider:hover {
+  background: #D8D0B5;
+}
+
+.vanam-luxury-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #064B3B;
+  border: 3px solid #C99A43;
+  box-shadow: 0 2px 10px rgba(6, 75, 59, 0.35), 0 0 10px rgba(201, 154, 67, 0.45);
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease;
+}
+
+.vanam-luxury-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.22);
+  box-shadow: 0 4px 16px rgba(6, 75, 59, 0.5), 0 0 16px rgba(201, 154, 67, 0.7);
+}
+
+.vanam-luxury-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #064B3B;
+  border: 3px solid #C99A43;
+  box-shadow: 0 2px 10px rgba(6, 75, 59, 0.35), 0 0 10px rgba(201, 154, 67, 0.45);
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease;
+}
+
+.vanam-luxury-slider::-moz-range-thumb:hover {
+  transform: scale(1.22);
+  box-shadow: 0 4px 16px rgba(6, 75, 59, 0.5), 0 0 16px rgba(201, 154, 67, 0.7);
+}
+
+/* Preset chip buttons */
+.preset-chip {
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border: 1px solid rgba(201, 154, 67, 0.35);
+  background: #FFFFFF;
+  color: #064B3B;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+}
+
+.preset-chip:hover {
+  background: rgba(201, 154, 67, 0.15);
+  border-color: #C99A43;
+  transform: translateY(-1px);
+}
+
+.preset-chip.active {
+  background: #064B3B;
+  color: #FFFFFF;
+  border-color: #064B3B;
+  box-shadow: 0 3px 10px rgba(6, 75, 59, 0.25);
+}
+
+/* =========================================================================
+   LUXURY BUTTONS & TYPOGRAPHY ENHANCEMENTS
+   ========================================================================= */
+.vanam-gold-glow-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vanam-gold-glow-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.vanam-gold-glow-btn:hover::after {
+  transform: rotate(30deg) translateX(100%);
+}
+
+/* Responsive adjustment for leaf metrics grid */
+@media (max-width: 900px) {
+  .vanam-leaf-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .vanam-leaf-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

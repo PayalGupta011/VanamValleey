@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Production Builds
+dist/
+build/
+.output/
+
+# Backend Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Scratch & Local Utility Scripts
+scratch/
+*.ps1
+upgrade_admin_enquiries.py
+
+
+# Logs & Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.local
+

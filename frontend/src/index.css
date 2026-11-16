@@ -1,0 +1,2252 @@
+/* ============================================
+   VANAM VALLEY — ULTRA-LUXURY DESIGN SYSTEM
+   Editorial Nature-Inspired Luxury Real Estate
+   ============================================ */
+
+:root {
+  /* Brand Colors */
+  --color-forest: #004B3C;
+  --color-forest-deep: #00261E;
+  --color-forest-dark: #003329;
+  --color-forest-light: #006B55;
+  --color-forest-glow: rgba(0, 75, 60, 0.4);
+
+  --color-peach: #F7D6B0;
+  --color-peach-light: #FBE8D4;
+  --color-peach-dark: #E5B87A;
+
+  --color-gold: #B68B45;
+  --color-gold-light: #D4A85A;
+  --color-gold-dark: #8C6728;
+  --color-gold-gradient: linear-gradient(135deg, #F7D6B0 0%, #D4A85A 50%, #B68B45 100%);
+  --color-gold-glow: rgba(182, 139, 69, 0.35);
+
+  --color-ivory: #F8F6F0;
+  --color-ivory-warm: #F4EFE6;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-black: #0E100F;
+  --color-gray-50: #FAFAF8;
+  --color-gray-100: #F5F3EF;
+  --color-gray-200: #E8E5DE;
+  --color-gray-300: #D1CDC4;
+  --color-gray-400: #A9A49B;
+  --color-gray-500: #7A756C;
+  --color-gray-600: #5C574F;
+  --color-gray-700: #3E3A34;
+  --color-gray-800: #2A2722;
+  --color-gray-900: #1A1815;
+
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-serif: 'Poppins', sans-serif;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+label,
+table,
+th,
+td {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-gray-700);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  selection-background-color: var(--color-gold);
+  selection-color: #FFFFFF;
+}
+
+::selection {
+  background: #B68B45;
+  color: #FFFFFF;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ============================================
+   LUXURY ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+}
+
+/* Luxury Shimmer Text */
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #F7D6B0 0%,
+    #FFE8CC 25%,
+    #D4A85A 50%,
+    #F7D6B0 75%,
+    #B68B45 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: goldShimmer 6s linear infinite;
+}
+
+.ken-burns {
+  animation: kenBurns 22s ease-in-out infinite alternate;
+}
+
+.float-animation {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s infinite;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(0, 35, 28, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(247, 214, 176, 0.2);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 229, 222, 0.8);
+}
+
+/* Interactive Card Hover */
+.luxury-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 75, 60, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00261E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B68B45;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4A85A;
+}
+
+/* ============================================
+   RESPONSIVE HERO & NAVBAR STYLING
+   ============================================ */
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: flex !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+  }
+  .desktop-nav a,
+  .desktop-nav button,
+  .desktop-phone,
+  .desktop-phone span {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    flex-shrink: 0 !important;
+  }
+  .desktop-phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+  .desktop-divider {
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+  .mobile-toggle {
+    display: none !important;
+  }
+}
+
+/* Fluid spacing on desktop screens to guarantee zero overlap or clipping */
+@media (min-width: 992px) and (max-width: 1260px) {
+  .desktop-nav {
+    gap: 4px !important;
+  }
+  .desktop-nav a,
+  .desktop-nav button {
+    padding: 5px 8px !important;
+    font-size: 0.8rem !important;
+  }
+  .desktop-phone-text {
+    display: none !important;
+  }
+  .desktop-phone {
+    padding: 6px 9px !important;
+    background: rgba(0, 56, 43, 0.08) !important;
+    border-radius: 9999px !important;
+  }
+  .desktop-sitevisit-btn {
+    padding: 6px 11px !important;
+    font-size: 0.76rem !important;
+  }
+  .desktop-enquire-btn {
+    padding: 7px 13px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+@media (min-width: 1261px) {
+  .desktop-phone-text {
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    min-height: 600px !important;
+    height: auto !important;
+    padding: 3rem 1.5rem !important;
+  }
+  .hero-right-container {
+    width: 100% !important;
+    opacity: 0.3 !important;
+  }
+  .hero-content-wrapper {
+    padding: 2rem 0 !important;
+  }
+  .hero-text-block {
+    max-width: 100% !important;
+  }
+}
+
+.editorial-serif,
+/* Luxury Poppins Heading Typography */
+.luxury-serif {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1.luxury-serif,
+h2.luxury-serif,
+h3.luxury-serif,
+span.luxury-serif,
+p.luxury-serif,
+div.luxury-serif {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+@media (max-width: 991px) {
+  .property-options-section,
+  .vanam-projects-section {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 3rem 1.5rem !important;
+  }
+  .property-options-container {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .property-options-cards-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+  }
+  .vanam-projects-section .vanam-spotlight-card {
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .vanam-location-split-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .vanam-landmarks-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .property-options-cards-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 6px 4px 18px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .property-options-cards-grid .property-rectangular-card {
+    flex: 0 0 280px !important;
+    scroll-snap-align: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .vanam-connectivity-bottom-panel {
+    border-radius: 20px !important;
+    padding: 16px 20px !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .vanam-landmarks-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================================
+   LUXURY ARCH SHOWCASE CARDS ANIMATIONS (SECTION 2)
+   ========================================================================= */
+
+@keyframes goldAuraBreathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.32;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.52;
+  }
+}
+
+.animate-gold-aura {
+  animation: goldAuraBreathe 6s ease-in-out infinite alternate !important;
+}
+
+@keyframes archShimmerSweep {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  20%, 100% {
+    transform: translateX(200%) rotate(25deg);
+  }
+}
+
+@keyframes arrowGlowPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(221, 174, 91, 0.45), 0 0 0 0 rgba(221, 174, 91, 0.35);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(221, 174, 91, 0.7), 0 0 0 8px rgba(221, 174, 91, 0);
+  }
+}
+
+.animate-arrow-pulse {
+  animation: arrowGlowPulse 2.8s infinite ease-out !important;
+}
+
+@keyframes cardFloatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-card-float {
+  animation: cardFloatGentle 5s ease-in-out infinite !important;
+}
+
+/* Responsive Overlapping Arch Stage */
+@media (max-width: 991px) {
+  .property-options-container {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .vanam-arch-stage-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 420px !important;
+    margin: 1rem auto 0 !important;
+  }
+  .vanam-arch-stage-container > div:last-child {
+    transform: scale(0.80) !important;
+    transform-origin: top center !important;
+    width: 500px !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .vanam-arch-stage-container {
+    height: 380px !important;
+  }
+  .vanam-arch-stage-container > div:last-child {
+    transform: scale(0.68) !important;
+    transform-origin: top center !important;
+    width: 500px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .vanam-arch-stage-container {
+    height: 340px !important;
+  }
+  .vanam-arch-stage-container > div:last-child {
+    transform: scale(0.58) !important;
+    transform-origin: top center !important;
+    width: 500px !important;
+  }
+}
+
+/* =========================================================================
+   LUXURY HERO & INTERACTIVE ANIMATIONS
+   ========================================================================= */
+
+@keyframes leafBreeze {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(2.5deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-leaf-breeze {
+  transform-origin: top left;
+  animation: leafBreeze 8s ease-in-out infinite alternate !important;
+}
+
+@keyframes goldPulseCurve {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(212, 168, 90, 0.45));
+    opacity: 0.88;
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(247, 214, 176, 0.85));
+    opacity: 1;
+  }
+}
+
+.animate-gold-curve {
+  animation: goldPulseCurve 4s ease-in-out infinite alternate !important;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-1 {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-up-2 {
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.fade-up-3 {
+  animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.fade-up-4 {
+  animation: heroFadeUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+  opacity: 0;
+}
+
+@keyframes buttonPulseGlow {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(247, 214, 176, 0.35);
+  }
+  50% {
+    box-shadow: 0 12px 34px rgba(247, 214, 176, 0.65), 0 0 16px rgba(247, 214, 176, 0.4);
+  }
+}
+
+.glow-button-pulse {
+  animation: buttonPulseGlow 3.5s ease-in-out infinite !important;
+}
+
+/* Radar & Connectivity Animations */
+@keyframes radarSweepScan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radarSweepScan 5s linear infinite !important;
+  transform-origin: center center !important;
+}
+
+@keyframes radarRingPulse {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+}
+
+.animate-radar-ring {
+  animation: radarRingPulse 3.5s ease-in-out infinite !important;
+}
+
+@keyframes pinFloatPulse {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 8px 24px rgba(243, 195, 106, 0.75));
+  }
+  50% {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 14px 34px rgba(243, 195, 106, 0.95));
+  }
+}
+
+.animate-pin-float {
+  animation: pinFloatPulse 3s ease-in-out infinite !important;
+}
+
+/* =========================================================================
+   ABOUT US SECTION - SINGLE VIEWPORT & MOBILE RESPONSIVE
+   ========================================================================= */
+.vanam-about-section {
+  position: relative;
+}
+
+@media (max-width: 991px) {
+  .vanam-about-section {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 4.5rem 1.5rem !important;
+    background-position: center !important;
+    background-attachment: scroll !important;
+  }
+}
+
+/* =========================================================================
+   SCROLL MARGIN & LOCATION SECTION MOBILE REFINEMENT
+   ========================================================================= */
+section[id],
+.vanam-location-section,
+.vanam-projects-section,
+.vanam-about-section {
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 480px) {
+  .vanam-location-section {
+    padding: 3.5rem 0.9rem !important;
+  }
+}
+
+/* =========================================================================
+   PROPERTY OPTIONS — AUTONOMOUS LUXURY FLOATING & SHIMMER ANIMATIONS
+   ========================================================================= */
+
+@keyframes cardFloatLeft {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.25deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes cardFloatCenter {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.008);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes cardFloatRight {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.25deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes goldAuraPulse {
+  0%, 100% {
+    box-shadow: 0 26px 65px rgba(182, 139, 69, 0.36), 0 0 22px rgba(243, 195, 106, 0.22);
+  }
+  50% {
+    box-shadow: 0 32px 80px rgba(182, 139, 69, 0.52), 0 0 38px rgba(243, 195, 106, 0.42);
+  }
+}
+
+@keyframes orbitNodePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(212, 168, 90, 0.7));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(247, 214, 176, 1));
+    transform: scale(1.25);
+  }
+}
+
+.animate-card-float-left {
+  animation: cardFloatLeft 5.5s ease-in-out infinite alternate !important;
+}
+
+.animate-card-float-center {
+  animation: cardFloatCenter 6.5s ease-in-out infinite alternate !important;
+}
+
+.animate-card-float-right {
+  animation: cardFloatRight 6s ease-in-out infinite alternate 0.4s !important;
+}
+
+.animate-gold-aura {
+  animation: goldAuraPulse 4s ease-in-out infinite !important;
+}
+
+.animate-orbit-node {
+  transform-origin: center center;
+  animation: orbitNodePulse 3s ease-in-out infinite alternate !important;
+}
+
+.property-arch-card:hover {
+  animation-play-state: paused !important;
+}
+
+@keyframes luxuryLightSheen {
+  0% {
+    transform: translateX(-150%) skewX(-22deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  35% {
+    transform: translateX(250%) skewX(-22deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(250%) skewX(-22deg);
+    opacity: 0;
+  }
+}
+
+.luxury-card-sheen-1 {
+  animation: luxuryLightSheen 6.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.luxury-card-sheen-2 {
+  animation: luxuryLightSheen 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.2s;
+}
+
+.luxury-card-sheen-3 {
+  animation: luxuryLightSheen 7.2s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.5s;
+}
+
+/* =========================================================================
+   PROJECTS SECTION — INFINITE LUXURY MARQUEE WITH PAUSE ON HOVER
+   ========================================================================= */
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.vanam-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+  padding: 0.5rem 0 1rem;
+}
+
+.vanam-marquee-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marqueeScroll 36s linear infinite;
+  will-change: transform;
+}
+
+.vanam-marquee-container:hover .vanam-marquee-track,
+.vanam-marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+.vanam-marquee-card {
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.vanam-marquee-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: #F7D6B0 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(247, 214, 176, 0.3) !important;
+}
+
+/* Location Section Holographic Radar & Route Animations */
+@keyframes routeDashFlow {
+  from {
+    stroke-dashoffset: 36;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-route-flow {
+  animation: routeDashFlow 1.8s linear infinite;
+}
+
+@keyframes sonarPulseRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+.sonar-ripple {
+  animation: sonarPulseRipple 3s cubic-bezier(0.1, 0.4, 0.6, 1) infinite;
+}
+
+.sonar-ripple-delayed {
+  animation: sonarPulseRipple 3s cubic-bezier(0.1, 0.4, 0.6, 1) infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes nodeFloatGently {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-node-float-1 {
+  animation: nodeFloatGently 4.2s ease-in-out infinite;
+}
+
+.animate-node-float-2 {
+  animation: nodeFloatGently 4.8s ease-in-out infinite 0.7s;
+}
+
+.animate-node-float-3 {
+  animation: nodeFloatGently 5.1s ease-in-out infinite 1.4s;
+}
+
+.animate-node-float-4 {
+  animation: nodeFloatGently 4.5s ease-in-out infinite 2.1s;
+}
+
+/* =========================================================================
+   PROPERTY OPTIONS — 3D ROTATING TRI-CARD CAROUSEL (UIVERSE ARCHITECTURAL ADAPTATION)
+   Continuous Dwell-and-Glide Cycle between Left, Center, Right with Pause on Hover
+   ========================================================================= */
+
+@keyframes rotateCard1_Plots {
+  /* 0% to 25%: LEFT */
+  0%, 25% {
+    top: 28px;
+    left: calc(50% - clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(-12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  30% {
+    z-index: 2;
+  }
+  /* 33.33% to 58%: RIGHT */
+  33.33%, 58% {
+    top: 28px;
+    left: calc(50% + clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  63% {
+    z-index: 8;
+  }
+  /* 66.66% to 92%: CENTER */
+  66.66%, 92% {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) scale(1.05);
+    z-index: 8;
+    box-shadow: 0 32px 75px rgba(0, 40, 30, 0.42), 0 0 35px rgba(243, 195, 106, 0.38);
+  }
+  97% {
+    z-index: 3;
+  }
+  /* 100%: back to LEFT */
+  100% {
+    top: 28px;
+    left: calc(50% - clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(-12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+}
+
+@keyframes rotateCard2_Villas {
+  /* 0% to 25%: CENTER */
+  0%, 25% {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) scale(1.05);
+    z-index: 8;
+    box-shadow: 0 32px 75px rgba(182, 139, 69, 0.45), 0 0 35px rgba(243, 195, 106, 0.38);
+  }
+  29% {
+    z-index: 3;
+  }
+  /* 33.33% to 58%: LEFT */
+  33.33%, 58% {
+    top: 28px;
+    left: calc(50% - clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(-12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  63% {
+    z-index: 2;
+  }
+  /* 66.66% to 92%: RIGHT */
+  66.66%, 92% {
+    top: 28px;
+    left: calc(50% + clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  96% {
+    z-index: 8;
+  }
+  /* 100%: back to CENTER */
+  100% {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) scale(1.05);
+    z-index: 8;
+    box-shadow: 0 32px 75px rgba(182, 139, 69, 0.45), 0 0 35px rgba(243, 195, 106, 0.38);
+  }
+}
+
+@keyframes rotateCard3_Vanam {
+  /* 0% to 25%: RIGHT */
+  0%, 25% {
+    top: 28px;
+    left: calc(50% + clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  29% {
+    z-index: 8;
+  }
+  /* 33.33% to 58%: CENTER */
+  33.33%, 58% {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) scale(1.05);
+    z-index: 8;
+    box-shadow: 0 32px 75px rgba(0, 40, 30, 0.42), 0 0 35px rgba(243, 195, 106, 0.38);
+  }
+  63% {
+    z-index: 3;
+  }
+  /* 66.66% to 92%: LEFT */
+  66.66%, 92% {
+    top: 28px;
+    left: calc(50% - clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(-12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+  97% {
+    z-index: 2;
+  }
+  /* 100%: back to RIGHT */
+  100% {
+    top: 28px;
+    left: calc(50% + clamp(100px, 11vw, 140px));
+    transform: translateX(-50%) rotate(12deg) scale(0.92);
+    z-index: 3;
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.22);
+  }
+}
+
+.vanam-rotate-card-1 {
+  animation: rotateCard1_Plots 10.5s cubic-bezier(0.75, 0, 0.25, 1) infinite;
+  will-change: transform, top, left;
+}
+
+.vanam-rotate-card-2 {
+  animation: rotateCard2_Villas 10.5s cubic-bezier(0.75, 0, 0.25, 1) infinite;
+  will-change: transform, top, left;
+}
+
+.vanam-rotate-card-3 {
+  animation: rotateCard3_Vanam 10.5s cubic-bezier(0.75, 0, 0.25, 1) infinite;
+  will-change: transform, top, left;
+}
+
+.property-cards-rotating-stage:hover .vanam-rotate-card-1,
+.property-cards-rotating-stage:hover .vanam-rotate-card-2,
+.property-cards-rotating-stage:hover .vanam-rotate-card-3 {
+  animation-play-state: paused !important;
+}
+
+/* Stage Pedestal Glowing Lines (from Uiverse.io snippet adaptation) */
+.property-stage-lines {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.property-stage-line-1 {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 168, 90, 0.75) 50%, transparent 100%);
+  filter: blur(2px);
+}
+
+.property-stage-line-2 {
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(247, 214, 176, 0.95) 50%, transparent 100%);
+  filter: blur(4px);
+}
+
+
+
+
+
+
+
+/* Signature Projects & Phases 3-Card Showcase */
+.vanam-project-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.vanam-project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 168, 90, 0.75) !important;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(212, 168, 90, 0.25) !important;
+}
+.vanam-project-card:hover .vanam-card-img {
+  transform: scale(1.06);
+}
+.vanam-featured-card {
+  border-color: rgba(247, 214, 176, 0.75) !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 168, 90, 0.25) !important;
+}
+.vanam-featured-card:hover {
+  transform: translateY(-10px);
+  border-color: #F7D6B0 !important;
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(247, 214, 176, 0.4) !important;
+}
+
+/* Luxury Image Lazy Loading & Shimmer */
+.vanam-img-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(110deg, #102620 8%, #1a3830 18%, #102620 33%);
+  background-size: 200% 100%;
+  animation: vanamShimmer 2s infinite linear;
+}
+
+.vanam-img-container-light {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(110deg, #f0ece3 8%, #fbf9f5 18%, #f0ece3 33%);
+  background-size: 200% 100%;
+  animation: vanamShimmer 2s infinite linear;
+}
+
+@keyframes vanamShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.vanam-destination-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.vanam-destination-card:hover {
+  transform: translateY(-6px);
+  border-color: #D4A85A !important;
+  box-shadow: 0 16px 36px rgba(0, 40, 30, 0.12) !important;
+}
+
+.vanam-destination-card:hover .vanam-card-img {
+  transform: scale(1.05);
+}
+
+.vanam-view-more-btn:hover {
+  background-color: #004D3B !important;
+  box-shadow: 0 12px 30px rgba(0, 56, 43, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+
+/* Body & HTML Scroll Lock for Modals */
+html.modal-open,
+body.modal-open {
+  overflow: hidden !important;
+  height: 100% !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+}
+
+/* Unique Luxury "View All Regional Destinations" Button */
+.vanam-luxury-view-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 28px 12px 18px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00382B 0%, #00261E 55%, #001A14 100%);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid #D4A85A;
+  box-shadow: 0 12px 32px rgba(0, 45, 35, 0.4), 0 0 25px rgba(212, 168, 90, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.vanam-luxury-view-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(247, 214, 176, 0.35), transparent);
+  transition: left 0.75s ease;
+}
+
+.vanam-luxury-view-btn:hover::before {
+  left: 100%;
+}
+
+.vanam-luxury-view-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #F7D6B0;
+  box-shadow: 0 18px 45px rgba(0, 45, 35, 0.55), 0 0 35px rgba(247, 214, 176, 0.5);
+  background: linear-gradient(135deg, #004B3A 0%, #003026 55%, #002018 100%);
+}
+
+.vanam-luxury-btn-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(247, 214, 176, 0.15);
+  border: 1px solid rgba(212, 168, 90, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F7D6B0;
+  transition: transform 0.4s ease, background-color 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.vanam-luxury-view-btn:hover .vanam-luxury-btn-icon {
+  transform: rotate(45deg);
+  background: #F7D6B0;
+  color: #00261E;
+}
+
+.vanam-luxury-btn-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F7D6B0;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.vanam-luxury-view-btn:hover .vanam-luxury-btn-arrow {
+  transform: translateX(4px);
+  background: rgba(247, 214, 176, 0.25);
+  color: #FFFFFF;
+}
+
+
+/* ========================================================
+   VANAM VALLEY LUXURY LAZY LOADING SYSTEM WITH LOGO & PROGRESS
+   ======================================================== */
+@keyframes vanamLogoBreath {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 16px 40px rgba(0, 40, 30, 0.08), 0 0 25px rgba(212, 168, 90, 0.25);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 20px 48px rgba(0, 40, 30, 0.14), 0 0 35px rgba(247, 214, 176, 0.45);
+  }
+}
+
+@keyframes vanamProgressSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+.vanam-logo-badge {
+  animation: vanamLogoBreath 2.6s ease-in-out infinite;
+}
+
+.vanam-progress-line {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(212, 168, 90, 0.2);
+}
+
+.vanam-progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #D4A85A, #00382B, transparent);
+  border-radius: 9999px;
+  animation: vanamProgressSweep 1.6s infinite ease-in-out;
+}
+
+/* Subtle logo watermark inside lazy image placeholders */
+.vanam-img-container-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 85px auto;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+
+/* Luxury Preloader Logo Float Animation */
+@keyframes vanamPreloaderFloat {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 168, 90, 0.35);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.65), 0 0 45px rgba(247, 214, 176, 0.5);
+  }
+}
+
+
+/* ========================================================
+   VANAM VALLEY OFFICIAL PRELOADER ANIMATIONS (100% MATCH TO REFERENCE)
+   ======================================================== */
+@keyframes vanamArcSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vanamDotPulse {
+  0%, 80%, 100% {
+    opacity: 0.22;
+    transform: scale(0.85);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.25);
+    background-color: #006B52;
+    box-shadow: 0 0 8px rgba(0, 107, 82, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanam-pulse-dot {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================================
+   ENHANCED HERO LUXURY ANIMATIONS & HIGHLIGHTS
+   ========================================================================= */
+
+@keyframes goldTextShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-gold-text {
+  background: linear-gradient(
+    120deg,
+    #F5CF96 0%,
+    #FFF4E6 20%,
+    #E5B37B 40%,
+    #FFE5C2 60%,
+    #D4A85A 80%,
+    #F5CF96 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldTextShimmer 5s linear infinite;
+  text-shadow: 0 0 25px rgba(247, 214, 176, 0.4);
+}
+
+@keyframes buttonSheenSweep {
+  0% {
+    transform: translateX(-160%) skewX(-25deg);
+  }
+  25%, 100% {
+    transform: translateX(260%) skewX(-25deg);
+  }
+}
+
+.sheen-glow-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sheen-glow-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50px;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 100%
+  );
+  animation: buttonSheenSweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes playSonarRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+.play-sonar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(247, 214, 176, 0.85);
+  animation: playSonarRing 2.4s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes cinematicKenBurnsActive {
+  0% {
+    transform: scale(1.0) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate(-0.8%, -0.4%);
+  }
+  100% {
+    transform: scale(1.0) translate(0, 0);
+  }
+}
+
+.hero-slide-active-img {
+  animation: cinematicKenBurnsActive 14s ease-in-out infinite alternate !important;
+}
+
+@keyframes leafBreezeRefined {
+  0% {
+    transform: rotate(0deg) translateY(0) scale(1);
+  }
+  30% {
+    transform: rotate(2deg) translateY(3px) scale(1.015);
+  }
+  65% {
+    transform: rotate(-1.5deg) translateY(-2px) scale(1.008);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0) scale(1);
+  }
+}
+
+.animate-leaf-breeze {
+  transform-origin: top left;
+  animation: leafBreezeRefined 7s ease-in-out infinite !important;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.75);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(74, 222, 128, 0);
+  }
+}
+
+.live-green-dot {
+  animation: liveDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4s ease-in-out infinite;
+}
+
+
+/* =========================================================================
+   ARCHITECTURAL SHOWCASE TRI-CARDS ANIMATIONS
+   ========================================================================= */
+
+@keyframes drawUnderline {
+  from {
+    stroke-dashoffset: 250;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw-underline-gold {
+  stroke-dasharray: 250;
+  animation: drawUnderline 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes goldBorderShine {
+  0%, 100% {
+    box-shadow: 0 24px 55px rgba(6, 75, 59, 0.22), 0 0 10px rgba(221, 174, 91, 0.3);
+  }
+  50% {
+    box-shadow: 0 30px 65px rgba(6, 75, 59, 0.3), 0 0 24px rgba(221, 174, 91, 0.6);
+  }
+}
+
+.center-card-glow {
+  animation: goldBorderShine 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtleTownshipZoom {
+  0% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.township-zoom-img {
+  animation: subtleTownshipZoom 10s ease-in-out infinite alternate;
+}
+
+/* =========================================================================
+   SIGNATURE PROJECTS & PHASES — CINEMATIC 3D & LEAF METRICS ANIMATIONS
+   ========================================================================= */
+
+@keyframes islandFloatSubtle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.15deg);
+  }
+}
+
+.animate-island-float {
+  animation: islandFloatSubtle 7s ease-in-out infinite;
+}
+
+@keyframes goldPedestalPulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(244, 198, 109, 0.4), inset 0 0 15px rgba(244, 198, 109, 0.25);
+    border-color: rgba(244, 198, 109, 0.65);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(244, 198, 109, 0.75), inset 0 0 25px rgba(244, 198, 109, 0.45);
+    border-color: rgba(255, 235, 180, 0.95);
+    opacity: 1;
+  }
+}
+
+.animate-gold-pedestal {
+  animation: goldPedestalPulse 3.5s ease-in-out infinite alternate;
+}
+
+.township-island-interactive {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.township-island-interactive:hover {
+  transform: translateY(-8px) scale(1.035) !important;
+  filter: drop-shadow(0 32px 55px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 28px rgba(244, 198, 109, 0.35)) !important;
+}
+
+@keyframes markerPulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(244, 198, 109, 0.7);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 10px rgba(244, 198, 109, 0);
+  }
+}
+
+.animate-marker-glow {
+  animation: markerPulseGlow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes leafFloat1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+@keyframes leafFloat2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(0.4deg);
+  }
+}
+
+@keyframes leafFloat3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-0.3deg);
+  }
+}
+
+@keyframes leafFloat4 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.6deg);
+  }
+}
+
+.animate-leaf-float-1 {
+  animation: leafFloat1 5.4s ease-in-out infinite alternate;
+}
+
+.animate-leaf-float-2 {
+  animation: leafFloat2 6.2s ease-in-out infinite alternate 0.4s;
+}
+
+.animate-leaf-float-3 {
+  animation: leafFloat3 5.8s ease-in-out infinite alternate 0.8s;
+}
+
+.animate-leaf-float-4 {
+  animation: leafFloat4 6.5s ease-in-out infinite alternate 1.2s;
+}
+
+.leaf-card-wrapper:hover {
+  animation-play-state: paused !important;
+}
+
+@keyframes timelineRingGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(244, 198, 109, 0.5), inset 0 0 6px rgba(244, 198, 109, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(244, 198, 109, 0.85), inset 0 0 10px rgba(244, 198, 109, 0.6);
+  }
+}
+
+.animate-timeline-ring-glow {
+  animation: timelineRingGlow 3s ease-in-out infinite alternate;
+}
+
+/* =========================================================================
+   SIGNATURE PROJECTS RESPONSIVE BREAKPOINTS
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+  .vanam-signature-projects-section {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3.5rem 1.25rem 3rem !important;
+  }
+  .vanam-projects-stage-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+  .vanam-signature-projects-section .vanam-timeline-col {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+  .vanam-signature-projects-section .vanam-timeline-col svg {
+    display: none !important;
+  }
+  .vanam-signature-projects-section .vanam-timeline-col > div {
+    flex-direction: row !important;
+    justify-content: center !important;
+    height: auto !important;
+    gap: 1.2rem !important;
+    flex-wrap: wrap !important;
+  }
+  .vanam-township-island-col {
+    width: 100% !important;
+    max-width: 650px !important;
+    margin: 0 auto !important;
+  }
+  .vanam-signature-projects-section .vanam-project-card-col {
+    width: 100% !important;
+    max-width: 540px !important;
+    margin: 0 auto !important;
+  }
+  .vanam-leaf-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .vanam-connectivity-bottom-panel {
+    border-radius: 20px !important;
+    padding: 16px 20px !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .vanam-leaf-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .vanam-signature-projects-section .vanam-timeline-col > div {
+    gap: 0.6rem !important;
+  }
+}
+
+/* =========================================================================
+   STRATEGIC CONNECTIVITY & HIGHWAYS CINEMATIC MOTION SYSTEM
+   ========================================================================= */
+
+@keyframes cinematicHighwayZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes highwaySunlightSweep {
+  0% {
+    opacity: 0.25;
+    transform: translate(-30%, -30%) rotate(0deg);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate(-20%, -20%) rotate(15deg);
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(-30%, -30%) rotate(0deg);
+  }
+}
+
+@keyframes pinFloatPulse {
+  0%, 100% {
+    transform: translate(-50%, -100%) translateY(0);
+    filter: drop-shadow(0 4px 10px rgba(201, 154, 67, 0.6));
+  }
+  50% {
+    transform: translate(-50%, -100%) translateY(-7px);
+    filter: drop-shadow(0 10px 18px rgba(244, 198, 109, 0.9));
+  }
+}
+
+@keyframes roadRippleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.35, 0.16);
+    opacity: 0.95;
+    border-width: 2px;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.4, 1.35);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes routeGlowStroke {
+  0%, 100% {
+    stroke: #C99A43;
+    filter: drop-shadow(0 0 3px rgba(201, 154, 67, 0.4));
+  }
+  50% {
+    stroke: #F4C66D;
+    filter: drop-shadow(0 0 8px rgba(244, 198, 109, 0.85));
+  }
+}
+
+@keyframes nodeGlowPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(201, 154, 67, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 16px rgba(244, 198, 109, 0.9);
+  }
+}
+
+@keyframes goldShimmerBar {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes archRimGlowSweep {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(201, 154, 67, 0.35), 0 20px 45px rgba(6, 75, 59, 0.15);
+    border-color: #C99A43;
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(244, 198, 109, 0.65), 0 25px 60px rgba(6, 75, 59, 0.25);
+    border-color: #F4C66D;
+  }
+}
+
+.vanam-connectivity-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+
+.vanam-connectivity-card:not(.card-center):hover {
+  transform: translateY(-6px);
+  border-color: #C99A43 !important;
+  box-shadow: 0 16px 36px rgba(201, 154, 67, 0.22), 0 4px 12px rgba(6, 75, 59, 0.1) !important;
+}
+
+.vanam-connectivity-card.card-center {
+  transform: translateX(-50%);
+}
+
+.vanam-connectivity-card.card-center:hover {
+  transform: translateX(-50%) translateY(-6px);
+  border-color: #C99A43 !important;
+  box-shadow: 0 16px 36px rgba(201, 154, 67, 0.22), 0 4px 12px rgba(6, 75, 59, 0.1) !important;
+}
+
+.vanam-connectivity-card .vanam-node-icon-circle {
+  transform: translateX(-50%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.vanam-connectivity-card:hover .vanam-node-icon-circle {
+  transform: translateX(-50%) rotate(8deg) scale(1.08);
+  box-shadow: 0 0 20px rgba(201, 154, 67, 0.6);
+}
+
+.vanam-connectivity-card:hover .vanam-dist-badge {
+  background-color: #FFE6BD !important;
+  border-color: #C99A43 !important;
+}
+
+@media (max-width: 960px) {
+  .vanam-connectivity-desktop-stage {
+    display: none !important;
+  }
+  .vanam-connectivity-mobile-stage {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 961px) {
+  .vanam-connectivity-desktop-stage {
+    display: block !important;
+  }
+  .vanam-connectivity-mobile-stage {
+    display: none !important;
+  }
+}
+
+/* Luxury Modal Smooth Scrollbar */
+.vanam-checklist-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #C99A43 #FAF7F0;
+}
+
+.vanam-checklist-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vanam-checklist-scroll::-webkit-scrollbar-track {
+  background: #FAF7F0;
+  border-radius: 9999px;
+}
+
+.vanam-checklist-scroll::-webkit-scrollbar-thumb {
+  background: #C99A43;
+  border-radius: 9999px;
+}
+
+.vanam-checklist-scroll::-webkit-scrollbar-thumb:hover {
+  background: #064B3B;
+}
+
+/* Mobile Slide-in Drawer Animation & Responsive Rules */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .desktop-nav,
+  .desktop-divider,
+  .desktop-phone,
+  .desktop-checklist-btn {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .vanam-connectivity-bottom-panel {
+    border-radius: 20px !important;
+    padding: 16px 20px !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .desktop-enquire-btn {
+    display: none !important;
+  }
+  .desktop-sitevisit-btn {
+    padding: 6px 12px !important;
+    font-size: 0.76rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .desktop-sitevisit-btn {
+    padding: 6px 8px !important;
+  }
+  .desktop-sitevisit-btn span {
+    display: none !important;
+  }
+}
+
+/* =========================================================================
+   MOBILE RESPONSIVE PERFECTION (<= 768px and <= 640px)
+   Strictly scoped to mobile; Desktop view remains 100% untouched.
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  /* Prevent any horizontal screen blowout */
+  html, body, #root {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* About Us Section: High-contrast luxury emerald overlay on mobile */
+  .vanam-about-section {
+    position: relative !important;
+    background-position: center center !important;
+    padding: 3.5rem 1.25rem !important;
+  }
+  .vanam-about-section::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(0, 38, 30, 0.95) 0%, rgba(0, 24, 18, 0.90) 50%, rgba(0, 18, 14, 0.97) 100%) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+  .vanam-about-section > div {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Hero Section: Stack 3 badges cleanly, stack action buttons, hide floating badges */
+  .hero-section {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 2.25rem 1rem 3.5rem !important;
+    overflow: visible !important;
+  }
+  .hero-content-wrapper {
+    padding: 0 !important;
+  }
+  .hero-text-block h1 {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.6rem !important;
+  }
+  .hero-feature-badges {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+    padding: 14px 16px !important;
+    border-radius: 16px !important;
+  }
+  .hero-feature-divider {
+    display: none !important;
+  }
+  .hero-feature-badges > div {
+    width: 100% !important;
+    padding: 2px 0 !important;
+  }
+  .hero-action-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+  }
+  .hero-action-buttons > a,
+  .hero-action-buttons > button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 12px 20px !important;
+  }
+  .hero-slider-dots {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 1.5rem auto 0 !important;
+    width: fit-content !important;
+    z-index: 5 !important;
+  }
+  .hero-photo-badge,
+  .hero-carousel-nav {
+    display: none !important;
+  }
+
+  /* Property Options CTA Buttons: Clean full-width touch targets */
+  .property-options-ctas {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-top: 1.25rem !important;
+  }
+  .property-options-ctas > a,
+  .property-options-ctas > button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 12px 18px !important;
+    font-size: 0.88rem !important;
+  }
+
+  /* Calculator Card: Mobile-optimized spacing and 1-column layout */
+  .calculator-segmented-tabs {
+    border-radius: 20px !important;
+    grid-template-columns: 1fr !important;
+    padding: 8px !important;
+  }
+  .calculator-segmented-tabs button {
+    border-radius: 14px !important;
+    width: 100% !important;
+  }
+  .vanam-home-calculator-card {
+    padding: 1.25rem 1rem !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .vanam-home-calculator-card > div:last-child {
+    padding: 1.25rem 1rem !important;
+  }
+
+  /* Site Visit Helplines & Form: Wrapped clean phone numbers and card padding */
+  .vanam-helplines-pill {
+    border-radius: 18px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+  }
+  .vanam-helplines-numbers {
+    white-space: normal !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
+    font-size: 0.82rem !important;
+  }
+  .vanam-site-visit-card {
+    padding: 1.5rem 1.2rem !important;
+    border-radius: 24px !important;
+  }
+
+  /* Connectivity Bottom Panel: Stack on mobile without overflow */
+  .vanam-connectivity-bottom-panel {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 14px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .vanam-connectivity-bottom-panel > div {
+    width: 100% !important;
+  }
+  .vanam-connectivity-bottom-panel a {
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* =========================================================================
+   GLOBAL MODAL LOCK & SMOOTH SCROLL ARCHITECTURE
+   Prevents background page scrolling while modal is open.
+   ========================================================================= */
+
+body.modal-open,
+html.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+.vanam-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2200 !important;
+  background-color: rgba(0, 24, 18, 0.88) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem !important;
+  box-sizing: border-box !important;
+  overscroll-behavior: contain !important;
+}
+
+.vanam-modal-card {
+  position: relative !important;
+  width: 100% !important;
+  max-height: calc(100vh - 2.5rem) !important;
+  max-height: min(92vh, 850px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 154, 67, 0.25) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #C99A43 #FAF7F0 !important;
+}
+
+.vanam-modal-card::-webkit-scrollbar {
+  width: 6px !important;
+}
+.vanam-modal-card::-webkit-scrollbar-track {
+  background: #FAF7F0 !important;
+  border-radius: 9999px !important;
+}
+.vanam-modal-card::-webkit-scrollbar-thumb {
+  background: #C99A43 !important;
+  border-radius: 9999px !important;
+}
+.vanam-modal-card::-webkit-scrollbar-thumb:hover {
+  background: #00382B !important;
+}
+
+/* =========================================================================
+   LUXURY BUTTON & CARD SHEEN ANIMATIONS
+   Adds soft metallic shimmer sweep on hover and ambient prestige
+   ========================================================================= */
+
+@keyframes vanamSheenSweep {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(250%) rotate(25deg);
+  }
+}
+
+.vanam-btn-sheen {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.vanam-btn-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.vanam-btn-sheen:hover::after {
+  animation: vanamSheenSweep 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.vanam-luxury-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.vanam-luxury-card-hover:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 18px 40px rgba(6, 75, 59, 0.14), 0 0 20px rgba(201, 154, 67, 0.25) !important;
+}
+
+
+
