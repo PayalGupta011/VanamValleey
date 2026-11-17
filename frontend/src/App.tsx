@@ -124,6 +124,58 @@ function MainApp() {
     }
   }, [enquiryModalOpen, siteVisitModalOpen, checklistModalOpen]);
 
+  // Universal Buttery Smooth Scroll Reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('vanam-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    const observeElements = () => {
+      const elements = document.querySelectorAll(
+        '.vanam-reveal, .vanam-reveal-left, .vanam-reveal-right, .vanam-reveal-scale, section, .vanam-amenity-card, .vanam-pillar-card, .vanam-contact-card'
+      );
+      elements.forEach((el) => {
+        if (!el.classList.contains('vanam-revealed')) {
+          if (
+            !el.classList.contains('vanam-reveal') &&
+            !el.classList.contains('vanam-reveal-left') &&
+            !el.classList.contains('vanam-reveal-right') &&
+            !el.classList.contains('vanam-reveal-scale')
+          ) {
+            el.classList.add('vanam-reveal');
+          }
+          observer.observe(el);
+        }
+      });
+    };
+
+    observeElements();
+    const timeout = setTimeout(observeElements, 250);
+
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+      clearTimeout(timeout);
+    };
+  }, [location.pathname]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <VanamPreloader isInitialSplash={true} />

@@ -127,6 +127,19 @@ export const AdminContent: React.FC = () => {
               title: data.curatedAmenities?.card3?.title || 'Spa & Wellness',
               image: data.curatedAmenities?.card3?.image || '/amenities/spa_card.jpg',
             },
+            clubDiningImage: data.curatedAmenities?.clubDiningImage || '/amenities_card1_dining_hd.jpg',
+            clubLoungeImage: data.curatedAmenities?.clubLoungeImage || '/amenities/clubhouse_resort.jpg',
+            clubPrivateDiningImage: data.curatedAmenities?.clubPrivateDiningImage || '/amenities/dining_card.jpg',
+            yogaImage: data.curatedAmenities?.yogaImage || '/amenities_card3_spa_hd.jpg',
+            golfImage: data.curatedAmenities?.golfImage || '/amenities/clubhouse_resort.jpg',
+            sportsCourtImage: data.curatedAmenities?.sportsCourtImage || '/amenities/pool_card.jpg',
+            joggingTrackImage: data.curatedAmenities?.joggingTrackImage || '/amenities/dining_card.jpg',
+            weddingLawnImage: data.curatedAmenities?.weddingLawnImage || '/amenities/clubhouse_resort.jpg',
+            banquetHallImage: data.curatedAmenities?.banquetHallImage || '/amenities/dining_card.jpg',
+            amphitheatreImage: data.curatedAmenities?.amphitheatreImage || '/amenities/spa_card.jpg',
+            roadsImage: data.curatedAmenities?.roadsImage || '/amenities/clubhouse_resort.jpg',
+            drainageImage: data.curatedAmenities?.drainageImage || '/amenities/pool_card.jpg',
+            securityImage: data.curatedAmenities?.securityImage || '/amenities/dining_card.jpg',
           },
           connectivityHighwayImage: data.connectivityHighwayImage || '/connectivity_highway_pristine.jpg',
           amenities: data.amenities || [],
@@ -462,6 +475,7 @@ export const AdminContent: React.FC = () => {
           overflowX: 'auto',
           paddingBottom: '2px',
         }}
+        className="admin-content-tabs-bar"
       >
         {[
           { label: '🖼️ All Website Images Hub', val: 'all_images', icon: ImageIcon },
@@ -741,6 +755,87 @@ export const AdminContent: React.FC = () => {
                   }
                   defaultUrl="/amenities_card3_spa_hd.jpg"
                 />
+              </div>
+
+              {/* Sports, Events, Infra & Yoga Additional Images */}
+              <div style={{ marginTop: '1.5rem', borderTop: '1px dashed #D8AE61', paddingTop: '1.25rem' }}>
+                <div style={{ fontWeight: 700, color: '#064B3B', marginBottom: '0.75rem', fontSize: '0.96rem' }}>
+                  Additional Amenity Category Photos (Sports, Banquets, Infrastructure & Wellness)
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+                  <ImageFieldEditor
+                    label="Executive Mini Golf Turf"
+                    value={settings.curatedAmenities?.golfImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, golfImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Multi-Sport Courts (Badminton, Basketball)"
+                    value={settings.curatedAmenities?.sportsCourtImage || '/amenities/pool_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, sportsCourtImage: url } })}
+                    defaultUrl="/amenities/pool_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Forest Jogging & Cycling Track"
+                    value={settings.curatedAmenities?.joggingTrackImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, joggingTrackImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Grand Wedding & Celebration Lawn"
+                    value={settings.curatedAmenities?.weddingLawnImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, weddingLawnImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Air-Conditioned Banquet Hall"
+                    value={settings.curatedAmenities?.banquetHallImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, banquetHallImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Forest Amphitheatre"
+                    value={settings.curatedAmenities?.amphitheatreImage || '/amenities/spa_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, amphitheatreImage: url } })}
+                    defaultUrl="/amenities/spa_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Wide Concrete Roads & Boulevards"
+                    value={settings.curatedAmenities?.roadsImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, roadsImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Underground Drainage & Eco Utilities"
+                    value={settings.curatedAmenities?.drainageImage || '/amenities/pool_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, drainageImage: url } })}
+                    defaultUrl="/amenities/pool_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Multi-Tier Gated Security Gatehouse"
+                    value={settings.curatedAmenities?.securityImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, securityImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Yoga & Peace Pavilion Deck"
+                    value={settings.curatedAmenities?.yogaImage || '/amenities_card3_spa_hd.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, yogaImage: url } })}
+                    defaultUrl="/amenities_card3_spa_hd.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Sunset Timber Lounge Deck"
+                    value={settings.curatedAmenities?.clubLoungeImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, clubLoungeImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Private Dining Suites"
+                    value={settings.curatedAmenities?.clubPrivateDiningImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, clubPrivateDiningImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                </div>
               </div>
             </div>
 
@@ -1855,6 +1950,87 @@ export const AdminContent: React.FC = () => {
                   }
                   defaultUrl="/amenities_card3_spa_hd.jpg"
                 />
+              </div>
+
+              {/* Sports, Events, Infra & Yoga Additional Images */}
+              <div style={{ marginTop: '1.5rem', borderTop: '1px dashed #D8AE61', paddingTop: '1.25rem' }}>
+                <div style={{ fontWeight: 700, color: '#064B3B', marginBottom: '0.75rem', fontSize: '0.96rem' }}>
+                  Additional Amenity Category Photos (Sports, Banquets, Infrastructure & Wellness)
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+                  <ImageFieldEditor
+                    label="Executive Mini Golf Turf"
+                    value={settings.curatedAmenities?.golfImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, golfImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Multi-Sport Courts (Badminton, Basketball)"
+                    value={settings.curatedAmenities?.sportsCourtImage || '/amenities/pool_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, sportsCourtImage: url } })}
+                    defaultUrl="/amenities/pool_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Forest Jogging & Cycling Track"
+                    value={settings.curatedAmenities?.joggingTrackImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, joggingTrackImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Grand Wedding & Celebration Lawn"
+                    value={settings.curatedAmenities?.weddingLawnImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, weddingLawnImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Air-Conditioned Banquet Hall"
+                    value={settings.curatedAmenities?.banquetHallImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, banquetHallImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Forest Amphitheatre"
+                    value={settings.curatedAmenities?.amphitheatreImage || '/amenities/spa_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, amphitheatreImage: url } })}
+                    defaultUrl="/amenities/spa_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Wide Concrete Roads & Boulevards"
+                    value={settings.curatedAmenities?.roadsImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, roadsImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Underground Drainage & Eco Utilities"
+                    value={settings.curatedAmenities?.drainageImage || '/amenities/pool_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, drainageImage: url } })}
+                    defaultUrl="/amenities/pool_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Multi-Tier Gated Security Gatehouse"
+                    value={settings.curatedAmenities?.securityImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, securityImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Yoga & Peace Pavilion Deck"
+                    value={settings.curatedAmenities?.yogaImage || '/amenities_card3_spa_hd.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, yogaImage: url } })}
+                    defaultUrl="/amenities_card3_spa_hd.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Sunset Timber Lounge Deck"
+                    value={settings.curatedAmenities?.clubLoungeImage || '/amenities/clubhouse_resort.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, clubLoungeImage: url } })}
+                    defaultUrl="/amenities/clubhouse_resort.jpg"
+                  />
+                  <ImageFieldEditor
+                    label="Private Dining Suites"
+                    value={settings.curatedAmenities?.clubPrivateDiningImage || '/amenities/dining_card.jpg'}
+                    onChange={(url) => setSettings({ ...settings, curatedAmenities: { ...settings.curatedAmenities, clubPrivateDiningImage: url } })}
+                    defaultUrl="/amenities/dining_card.jpg"
+                  />
+                </div>
               </div>
             </div>
           </div>

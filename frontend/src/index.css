@@ -2248,5 +2248,118 @@ html.modal-open {
   box-shadow: 0 18px 40px rgba(6, 75, 59, 0.14), 0 0 20px rgba(201, 154, 67, 0.25) !important;
 }
 
+/* =========================================================================
+   UNIVERSAL BUTTERY SMOOTH SCROLL REVEAL ANIMATIONS
+   Reveals sections, cards, and headings smoothly as user scrolls
+   ========================================================================= */
+
+.vanam-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.vanam-reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.vanam-reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.vanam-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.vanam-revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+.vanam-delay-1 { transition-delay: 0.1s !important; }
+.vanam-delay-2 { transition-delay: 0.2s !important; }
+.vanam-delay-3 { transition-delay: 0.3s !important; }
+.vanam-delay-4 { transition-delay: 0.4s !important; }
+
+/* =========================================================================
+   ADMIN PANEL RESPONSIVE STYLES (Clean Mobile Drawer & Header)
+   ========================================================================= */
+@media (max-width: 992px) {
+  .admin-dashboard-two-col {
+    grid-template-columns: 1fr !important;
+  }
+  .admin-sidebar {
+    transform: translateX(-100%) !important;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 1000 !important;
+    box-shadow: 10px 0 32px rgba(0, 0, 0, 0.5) !important;
+  }
+  .admin-sidebar.open {
+    transform: translateX(0) !important;
+  }
+  .admin-sidebar-close-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .admin-mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .admin-top-header {
+    padding: 0 1.25rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-top-header {
+    padding: 0 0.85rem !important;
+    height: 60px !important;
+  }
+  .admin-header-title {
+    font-size: 0.82rem !important;
+  }
+  .admin-header-subtitle {
+    display: none !important;
+  }
+  .admin-header-btn-text {
+    display: none !important;
+  }
+  .admin-change-pw-btn {
+    padding: 7px 10px !important;
+  }
+  .admin-user-pill {
+    padding: 7px 10px !important;
+  }
+  .admin-content-tabs-bar {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none;
+    padding-bottom: 6px !important;
+  }
+  .admin-content-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
 
 

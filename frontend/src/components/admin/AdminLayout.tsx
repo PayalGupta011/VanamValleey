@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import {
-  LayoutDashboard,
+  Home,
   Building2,
-  Inbox,
+  Mail,
   FileEdit,
   Image as ImageIcon,
   ExternalLink,
@@ -15,6 +15,7 @@ import {
   Key,
   CheckCircle,
   AlertCircle,
+  ChevronDown,
 } from 'lucide-react';
 import { authStorage, api } from '../../services/api';
 import type { AdminUser } from '../../types';
@@ -35,13 +36,11 @@ export const AdminLayout: React.FC = () => {
   const [pwFeedback, setPwFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   useEffect(() => {
-    // Check if token exists
     if (!authStorage.isAuthenticated()) {
       navigate('/admin/login');
       return;
     }
 
-    // Verify token with backend
     api.adminGetMe().then((admin) => {
       if (!admin) {
         navigate('/admin/login');
@@ -53,7 +52,6 @@ export const AdminLayout: React.FC = () => {
     });
   }, [navigate]);
 
-  // Close mobile sidebar on route change
   useEffect(() => {
     setMobileSidebarOpen(false);
   }, [location.pathname]);
@@ -101,9 +99,9 @@ export const AdminLayout: React.FC = () => {
   };
 
   const navItems = [
-    { label: 'Overview', href: '/admin', icon: <LayoutDashboard size={18} /> },
+    { label: 'Overview', href: '/admin', icon: <Home size={18} /> },
     { label: 'Properties', href: '/admin/properties', icon: <Building2 size={18} /> },
-    { label: 'Enquiries', href: '/admin/enquiries', icon: <Inbox size={18} /> },
+    { label: 'Enquiries', href: '/admin/enquiries', icon: <Mail size={18} /> },
     { label: 'Website Content', href: '/admin/content', icon: <FileEdit size={18} /> },
     { label: 'Media Library', href: '/admin/media', icon: <ImageIcon size={18} /> },
   ];
@@ -121,14 +119,14 @@ export const AdminLayout: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#003329',
-          color: '#F8F6F0',
+          backgroundColor: '#00281F',
+          color: '#FAF6EF',
           fontFamily: "'Poppins', sans-serif",
         }}
       >
         <div style={{ textAlign: 'center' }}>
-          <Shield size={36} color="#F7D6B0" style={{ marginBottom: '1rem', opacity: 0.8 }} />
-          <p style={{ fontSize: '0.95rem', color: '#F7D6B0', margin: 0 }}>
+          <Shield size={36} color="#E5C37A" style={{ marginBottom: '1rem', opacity: 0.8 }} />
+          <p style={{ fontSize: '0.95rem', color: '#E5C37A', margin: 0 }}>
             Verifying Admin Authorization...
           </p>
         </div>
@@ -137,77 +135,128 @@ export const AdminLayout: React.FC = () => {
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F8F6F0' }}>
-      {/* Sidebar Desktop */}
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#FAF7F0', fontFamily: "'Poppins', sans-serif" }}>
+      {/* Mobile Backdrop */}
+      {mobileSidebarOpen && (
+        <div
+          onClick={() => setMobileSidebarOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 20, 15, 0.72)',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+            zIndex: 998,
+          }}
+          className="admin-mobile-backdrop"
+        />
+      )}
+
+      {/* Sidebar */}
       <aside
         style={{
           width: '260px',
-          backgroundColor: '#003329',
-          color: '#F8F6F0',
+          backgroundColor: '#00281F',
+          color: '#FAF6EF',
           display: 'flex',
           flexDirection: 'column',
           position: 'fixed',
           top: 0,
           bottom: 0,
           left: 0,
-          zIndex: 100,
-          borderRight: '1px solid rgba(248, 246, 240, 0.1)',
+          zIndex: 1000,
+          borderRight: '1.5px solid rgba(216, 174, 97, 0.25)',
+          overflow: 'hidden',
         }}
-        className="admin-sidebar"
+        className={`admin-sidebar ${mobileSidebarOpen ? 'open' : ''}`}
       >
+        {/* Mobile close button inside sidebar */}
+        <button
+          type="button"
+          onClick={() => setMobileSidebarOpen(false)}
+          className="admin-sidebar-close-btn"
+          aria-label="Close sidebar"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: 'none',
+            color: '#FAF6EF',
+            borderRadius: '8px',
+            padding: '6px',
+            cursor: 'pointer',
+            zIndex: 10,
+          }}
+        >
+          <X size={18} />
+        </button>
+
         {/* Brand header */}
         <div
           style={{
-            padding: '1.75rem 1.5rem',
-            borderBottom: '1px solid rgba(248, 246, 240, 0.1)',
+            padding: '1.75rem 1.5rem 1.25rem',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            textAlign: 'center',
           }}
         >
+          {/* Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="6" fill="#004B3B" />
+              <path d="M8 8H14V14H8V8Z" fill="#F5DA9A" />
+              <path d="M18 8H24V14H18V8Z" fill="#F5DA9A" />
+              <path d="M8 18H14V24H8V18Z" fill="#F5DA9A" />
+              <path d="M18 18H24V24H18V18Z" fill="#C99A43" />
+            </svg>
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '0.04em', lineHeight: 1.1 }}>
+                VANAM
+              </div>
+              <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#E5C37A', letterSpacing: '0.22em' }}>
+                VALLEY
+              </div>
+              <div style={{ fontSize: '0.48rem', color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.15em' }}>
+                BALAGHAT M.P.
+              </div>
+            </div>
+          </div>
+
+          {/* Gold CMS Pill Badge */}
           <div
             style={{
-              backgroundColor: '#FFFFFF',
-              padding: '6px 12px',
-              borderRadius: '6px',
-            }}
-          >
-            <img
-              src="/logo.png"
-              alt="Vanam Valley"
-              style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
-            />
-          </div>
-          <span
-            style={{
-              fontSize: '0.7rem',
-              textTransform: 'uppercase',
-              color: '#F7D6B0',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              backgroundColor: 'rgba(247, 214, 176, 0.15)',
-              padding: '3px 8px',
-              borderRadius: '4px',
+              fontSize: '0.68rem',
+              fontWeight: 800,
+              letterSpacing: '0.12em',
+              background: 'linear-gradient(135deg, #FBE09C 0%, #D4A74F 50%, #C99A43 100%)',
+              color: '#00281F',
+              padding: '3px 14px',
+              borderRadius: '9999px',
+              boxShadow: '0 2px 8px rgba(201, 154, 67, 0.35)',
+              marginTop: '4px',
             }}
           >
             CMS
-          </span>
+          </div>
         </div>
 
         {/* Navigation list */}
-        <nav style={{ padding: '1.5rem 1rem', display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
+        <nav style={{ padding: '1rem 1rem 0', display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, zIndex: 2 }}>
           <div
             style={{
-              fontSize: '0.7rem',
+              fontSize: '0.68rem',
               textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              color: 'rgba(248, 246, 240, 0.5)',
-              padding: '0 12px 8px',
+              letterSpacing: '0.15em',
+              color: 'rgba(250, 246, 239, 0.55)',
+              padding: '0 12px 6px',
               fontWeight: 600,
             }}
           >
-            Manage Portal
+            MANAGE PORTAL
           </div>
+
           {navItems.map((item) => {
             const active = isActive(item.href);
             return (
@@ -218,18 +267,34 @@ export const AdminLayout: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  padding: '10px 14px',
-                  borderRadius: '6px',
-                  color: active ? '#F7D6B0' : 'rgba(248, 246, 240, 0.8)',
-                  backgroundColor: active ? 'rgba(0, 75, 60, 0.8)' : 'transparent',
-                  fontWeight: active ? 600 : 500,
+                  padding: '11px 16px',
+                  borderRadius: '12px',
+                  color: active ? '#00281F' : 'rgba(250, 246, 239, 0.85)',
+                  background: active
+                    ? 'linear-gradient(135deg, #FBE09C 0%, #D4A74F 50%, #C99A43 100%)'
+                    : 'transparent',
+                  fontWeight: active ? 700 : 500,
                   fontSize: '0.88rem',
                   textDecoration: 'none',
-                  borderLeft: active ? '3px solid #B68B45' : '3px solid transparent',
-                  transition: 'all 0.2s',
+                  boxShadow: active ? '0 4px 14px rgba(201, 154, 67, 0.4)' : 'none',
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = 'rgba(250, 246, 239, 0.85)';
+                  }
                 }}
               >
-                {item.icon}
+                <span style={{ color: active ? '#00281F' : '#E5C37A', display: 'flex', alignItems: 'center' }}>
+                  {item.icon}
+                </span>
                 <span>{item.label}</span>
               </Link>
             );
@@ -237,15 +302,15 @@ export const AdminLayout: React.FC = () => {
 
           <div
             style={{
-              fontSize: '0.7rem',
+              fontSize: '0.68rem',
               textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              color: 'rgba(248, 246, 240, 0.5)',
-              padding: '1.5rem 12px 8px',
+              letterSpacing: '0.15em',
+              color: 'rgba(250, 246, 239, 0.55)',
+              padding: '1.25rem 12px 6px',
               fontWeight: 600,
             }}
           >
-            Public Site
+            PUBLIC SITE
           </div>
           <Link
             to="/"
@@ -254,99 +319,106 @@ export const AdminLayout: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
-              padding: '10px 14px',
-              borderRadius: '6px',
-              color: 'rgba(248, 246, 240, 0.75)',
+              padding: '11px 16px',
+              borderRadius: '12px',
+              color: 'rgba(250, 246, 239, 0.85)',
               fontSize: '0.88rem',
+              fontWeight: 500,
               textDecoration: 'none',
-              transition: 'color 0.2s',
+              transition: 'background-color 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = 'rgba(250, 246, 239, 0.85)';
             }}
           >
-            <ExternalLink size={17} />
+            <ExternalLink size={17} color="#E5C37A" />
             <span>View Live Website</span>
           </Link>
         </nav>
 
-        {/* User bar & Logout */}
+        {/* Forest Ridge Pine Tree Silhouettes at Bottom */}
+        <div style={{ position: 'relative', height: '110px', marginTop: 'auto', zIndex: 1, pointerEvents: 'none' }}>
+          <svg
+            viewBox="0 0 260 110"
+            preserveAspectRatio="none"
+            style={{ position: 'absolute', bottom: '65px', left: 0, right: 0, width: '100%', height: '80px', opacity: 0.22 }}
+          >
+            <path d="M 0 50 Q 60 25 130 45 Q 200 65 260 30 L 260 110 L 0 110 Z" fill="#001812" />
+            <path d="M 15 110 L 22 55 L 29 110 Z M 40 110 L 48 45 L 56 110 Z M 70 110 L 78 50 L 86 110 Z M 110 110 L 118 38 L 126 110 Z M 150 110 L 157 48 L 164 110 Z M 190 110 L 198 42 L 206 110 Z M 230 110 L 238 52 L 246 110 Z" fill="#00120D" />
+          </svg>
+        </div>
+
+        {/* User bar & Profile */}
         <div
           style={{
-            padding: '1.25rem 1.5rem',
-            borderTop: '1px solid rgba(248, 246, 240, 0.1)',
-            backgroundColor: '#00261E',
+            padding: '1rem 1.25rem',
+            borderTop: '1px solid rgba(216, 174, 97, 0.2)',
+            backgroundColor: '#001E17',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            position: 'relative',
+            zIndex: 3,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
             <div
               style={{
                 width: '36px',
                 height: '36px',
                 borderRadius: '50%',
-                backgroundColor: '#F7D6B0',
-                color: '#004B3C',
+                backgroundColor: '#FBE09C',
+                border: '1.5px solid #D4A74F',
+                color: '#00281F',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 700,
-                fontSize: '0.9rem',
+                fontWeight: 800,
+                fontSize: '0.92rem',
+                flexShrink: 0,
               }}
             >
               {user?.username?.charAt(0).toUpperCase() || 'A'}
             </div>
             <div style={{ overflow: 'hidden' }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#F8F6F0', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
-                {user?.username || 'Administrator'}
+              <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#FFFFFF', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                {user?.username || 'admin'}
               </div>
-              <div style={{ fontSize: '0.74rem', color: 'rgba(248, 246, 240, 0.6)', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+              <div style={{ fontSize: '0.72rem', color: 'rgba(250, 246, 239, 0.65)', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
                 {user?.email || 'admin@vanamvalley.com'}
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button
-              type="button"
-              onClick={() => setPwModalOpen(true)}
-              style={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                padding: '8px',
-                backgroundColor: 'rgba(248, 246, 240, 0.1)',
-                border: '1px solid rgba(248, 246, 240, 0.2)',
-                color: '#F7D6B0',
-                borderRadius: '6px',
-                fontSize: '0.78rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-              }}
-            >
-              <Key size={13} />
-              <span>Password</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleLogout}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '8px 12px',
-                backgroundColor: 'rgba(196, 57, 47, 0.15)',
-                border: '1px solid rgba(196, 57, 47, 0.4)',
-                color: '#F8A9A3',
-                borderRadius: '6px',
-                fontSize: '0.78rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-              }}
-              title="Sign Out"
-            >
-              <LogOut size={14} />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleLogout}
+            style={{
+              padding: '6px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: 'rgba(250, 246, 239, 0.6)',
+              cursor: 'pointer',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            title="Sign Out"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#F87171';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'rgba(250, 246, 239, 0.6)';
+            }}
+          >
+            <LogOut size={16} />
+          </button>
         </div>
       </aside>
 
@@ -355,10 +427,10 @@ export const AdminLayout: React.FC = () => {
         {/* Top Navbar */}
         <header
           style={{
-            height: '70px',
+            height: '66px',
             backgroundColor: '#FFFFFF',
-            borderBottom: '1px solid #E8E5DE',
-            padding: '0 2rem',
+            borderBottom: '1.2px solid rgba(216, 174, 97, 0.25)',
+            padding: '0 2.25rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -366,6 +438,7 @@ export const AdminLayout: React.FC = () => {
             top: 0,
             zIndex: 90,
           }}
+          className="admin-top-header"
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <button
@@ -375,63 +448,84 @@ export const AdminLayout: React.FC = () => {
                 display: 'none',
                 background: 'none',
                 border: 'none',
-                color: '#004B3C',
+                color: '#00281F',
                 cursor: 'pointer',
-                padding: '4px',
+                padding: '6px',
+                borderRadius: '8px',
               }}
               className="admin-mobile-toggle"
+              aria-label="Toggle menu"
             >
               {mobileSidebarOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <div style={{ fontSize: '0.92rem', color: '#5C574F' }}>
-              Vanam Valley <span style={{ color: '#B68B45' }}>•</span> Central Administration CMS
+            <div style={{ fontSize: '0.94rem', fontWeight: 600, color: '#1A1815' }} className="admin-header-title">
+              <span style={{ color: '#00382B', fontWeight: 700 }}>Vanam Valley</span>{' '}
+              <span style={{ color: '#C99A43', margin: '0 4px' }} className="admin-header-subtitle">•</span>{' '}
+              <span style={{ color: '#4A463E' }} className="admin-header-subtitle">Central Administration CMS</span>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {/* Change Password Pill Button */}
             <button
               type="button"
               onClick={() => setPwModalOpen(true)}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                backgroundColor: '#FFFFFF',
-                borderRadius: '6px',
-                border: '1px solid #E8E5DE',
-                fontSize: '0.8rem',
-                color: '#004B3C',
-                fontWeight: 600,
-                cursor: 'pointer',
-              }}
-            >
-              <Key size={14} color="#B68B45" />
-              <span>Change Password</span>
-            </button>
-
-            <div
-              style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '6px 14px',
-                backgroundColor: '#F8F6F0',
+                padding: '7px 18px',
+                backgroundColor: '#FFFDF9',
                 borderRadius: '9999px',
-                border: '1px solid #E8E5DE',
-                fontSize: '0.82rem',
-                color: '#004B3C',
+                border: '1.4px solid #D8AE61',
+                fontSize: '0.84rem',
+                color: '#00382B',
                 fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)',
+              }}
+              className="admin-change-pw-btn"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#FBF4EA';
+                e.currentTarget.style.borderColor = '#C99A43';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFDF9';
+                e.currentTarget.style.borderColor = '#D8AE61';
               }}
             >
-              <User size={14} color="#B68B45" />
-              <span>{user?.role || 'Admin'}</span>
+              <Key size={14} color="#B88532" />
+              <span className="admin-header-btn-text">Change Password</span>
+            </button>
+
+            {/* superadmin ⌄ User Pill */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '7px 16px',
+                backgroundColor: '#FFFDF9',
+                borderRadius: '9999px',
+                border: '1.4px solid #D8AE61',
+                fontSize: '0.84rem',
+                color: '#00382B',
+                fontWeight: 600,
+                cursor: 'pointer',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)',
+              }}
+              className="admin-user-pill"
+            >
+              <User size={14} color="#B88532" />
+              <span className="admin-header-btn-text">{user?.role || 'superadmin'}</span>
+              <ChevronDown size={14} color="#7A756C" />
             </div>
           </div>
         </header>
 
         {/* Render child routes */}
-        <main style={{ padding: '2.5rem', flex: 1 }}>
+        <main style={{ padding: 'clamp(1rem, 2.5vw, 2.5rem)', flex: 1 }} className="admin-main-content">
           <Outlet />
         </main>
       </div>
@@ -442,167 +536,149 @@ export const AdminLayout: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(0, 30, 24, 0.7)',
-            backdropFilter: 'blur(4px)',
+            backgroundColor: 'rgba(0, 30, 24, 0.75)',
+            backdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             padding: '1.5rem',
-            zIndex: 9999,
+            zIndex: 1000,
           }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setPwModalOpen(false);
-          }}
+          onClick={() => setPwModalOpen(false)}
         >
           <div
             style={{
               backgroundColor: '#FFFFFF',
-              borderRadius: '16px',
-              width: '100%',
+              borderRadius: '20px',
+              padding: '2rem',
               maxWidth: '460px',
-              overflow: 'hidden',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.25)',
+              width: '100%',
+              border: '1.5px solid #D8AE61',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.35)',
             }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <div
-              style={{
-                backgroundColor: '#004B3C',
-                padding: '1.5rem 2rem',
-                color: '#F8F6F0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <h3 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '1.6rem', margin: 0, color: '#F8F6F0' }}>
-                Change Admin Password
-              </h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Key size={20} color="#C99A43" />
+                <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.35rem', color: '#00382B', margin: 0, fontWeight: 700 }}>
+                  Change Master Password
+                </h3>
+              </div>
               <button
                 type="button"
                 onClick={() => setPwModalOpen(false)}
-                style={{ background: 'none', border: 'none', color: '#F8F6F0', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: '#7A756C', cursor: 'pointer' }}
               >
                 <X size={20} />
               </button>
             </div>
 
-            <form onSubmit={handleChangePassword} style={{ padding: '2rem' }}>
-              {pwFeedback && (
-                <div
-                  style={{
-                    backgroundColor: pwFeedback.type === 'success' ? '#DEF7EC' : '#FDF2F2',
-                    color: pwFeedback.type === 'success' ? '#03543F' : '#9B1C1C',
-                    border: pwFeedback.type === 'success' ? '1px solid #BCF0DA' : '1px solid #F8B4B4',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '6px',
-                    fontSize: '0.85rem',
-                    marginBottom: '1.25rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                  }}
-                >
-                  {pwFeedback.type === 'success' ? <CheckCircle size={16} /> : <AlertCircle size={16} />}
-                  <span>{pwFeedback.message}</span>
-                </div>
-              )}
+            {pwFeedback && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  borderRadius: '8px',
+                  marginBottom: '1.25rem',
+                  fontSize: '0.85rem',
+                  backgroundColor: pwFeedback.type === 'success' ? '#DEF7EC' : '#FDE8E8',
+                  color: pwFeedback.type === 'success' ? '#03543F' : '#9B1C1C',
+                }}
+              >
+                {pwFeedback.type === 'success' ? <CheckCircle size={16} /> : <AlertCircle size={16} />}
+                <span>{pwFeedback.message}</span>
+              </div>
+            )}
 
-              <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#3E3A34', marginBottom: '0.35rem' }}>
+            <form onSubmit={handleChangePassword}>
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#4A463E', marginBottom: '0.35rem' }}>
                   Current Password
                 </label>
                 <input
                   type="password"
-                  required
-                  placeholder="••••••••••••"
                   value={currentPw}
                   onChange={(e) => setCurrentPw(e.target.value)}
-                  style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1CDC4', borderRadius: '6px', boxSizing: 'border-box' }}
+                  style={{
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: '8px',
+                    border: '1.2px solid #E8E5DE',
+                    fontSize: '0.9rem',
+                    boxSizing: 'border-box',
+                    outline: 'none',
+                  }}
+                  required
                 />
               </div>
 
-              <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#3E3A34', marginBottom: '0.35rem' }}>
-                  New Password (Min. 6 chars)
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#4A463E', marginBottom: '0.35rem' }}>
+                  New Password (min 6 characters)
                 </label>
                 <input
                   type="password"
-                  required
-                  placeholder="••••••••••••"
                   value={newPw}
                   onChange={(e) => setNewPw(e.target.value)}
-                  style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1CDC4', borderRadius: '6px', boxSizing: 'border-box' }}
+                  style={{
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: '8px',
+                    border: '1.2px solid #E8E5DE',
+                    fontSize: '0.9rem',
+                    boxSizing: 'border-box',
+                    outline: 'none',
+                  }}
+                  required
                 />
               </div>
 
-              <div style={{ marginBottom: '1.75rem' }}>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#3E3A34', marginBottom: '0.35rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#4A463E', marginBottom: '0.35rem' }}>
                   Confirm New Password
                 </label>
                 <input
                   type="password"
-                  required
-                  placeholder="••••••••••••"
                   value={confirmPw}
                   onChange={(e) => setConfirmPw(e.target.value)}
-                  style={{ width: '100%', padding: '0.75rem', border: '1px solid #D1CDC4', borderRadius: '6px', boxSizing: 'border-box' }}
+                  style={{
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: '8px',
+                    border: '1.2px solid #E8E5DE',
+                    fontSize: '0.9rem',
+                    boxSizing: 'border-box',
+                    outline: 'none',
+                  }}
+                  required
                 />
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-                <button
-                  type="button"
-                  onClick={() => setPwModalOpen(false)}
-                  style={{
-                    padding: '8px 16px',
-                    backgroundColor: '#F8F6F0',
-                    border: '1px solid #E8E5DE',
-                    borderRadius: '6px',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={pwLoading}
-                  style={{
-                    padding: '8px 20px',
-                    backgroundColor: '#004B3C',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
-                    cursor: pwLoading ? 'not-allowed' : 'pointer',
-                    opacity: pwLoading ? 0.7 : 1,
-                  }}
-                >
-                  {pwLoading ? 'Updating...' : 'Update Password'}
-                </button>
-              </div>
+              <button
+                type="submit"
+                disabled={pwLoading}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  background: 'linear-gradient(135deg, #004B3B 0%, #00281F 100%)',
+                  color: '#FFFFFF',
+                  borderRadius: '10px',
+                  border: '1px solid #D8AE61',
+                  fontWeight: 700,
+                  fontSize: '0.92rem',
+                  cursor: pwLoading ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 4px 14px rgba(0, 75, 59, 0.3)',
+                }}
+              >
+                {pwLoading ? 'Updating Password...' : 'Save New Password'}
+              </button>
             </form>
           </div>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 991px) {
-          .admin-sidebar {
-            display: ${mobileSidebarOpen ? 'flex' : 'none'} !important;
-            width: 260px !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-          }
-          .admin-main {
-            margin-left: 0 !important;
-          }
-          .admin-mobile-toggle {
-            display: block !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };

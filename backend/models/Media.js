@@ -16,17 +16,6 @@ const mediaSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: [
-        "villas",
-        "architecture",
-        "interiors",
-        "landscapes",
-        "amenities",
-        "lifestyle",
-        "hero",
-        "gallery",
-        "other",
-      ],
       default: "other",
     },
     width: { type: Number, default: 0 },

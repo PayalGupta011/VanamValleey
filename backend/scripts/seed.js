@@ -234,9 +234,14 @@ const seedDatabase = async () => {
           ],
           images: [
             {
-              url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-              alt: "The Teak Villa Exterior",
+              url: "/villa_teak_living.jpg",
+              alt: "The Teak 3 BHK Forest Villa Panoramic Interior",
               isPrimary: true,
+            },
+            {
+              url: "/curved_villa_hero.jpg",
+              alt: "The Teak 3 BHK Forest Villa Architecture",
+              isPrimary: false,
             },
           ],
           status: "available",

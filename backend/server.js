@@ -69,6 +69,7 @@ app.get("/", (req, res) => {
 const registerAppRoutes = (prefix = "") => {
   app.use(`${prefix}/admin/properties`, adminPropertyRoutes);
   app.use(`${prefix}/admin`, adminRoutes);
+  app.use(`${prefix}/auth`, adminRoutes);
   app.use(`${prefix}/properties`, propertyRoutes);
   app.use(`${prefix}/enquiries`, enquiryRoutes);
   app.use(`${prefix}/site-visits`, siteVisitRoutes);

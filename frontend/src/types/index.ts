@@ -168,6 +168,19 @@ export interface WebsiteSettings {
       title?: string;
       image?: string;
     };
+    clubDiningImage?: string;
+    clubLoungeImage?: string;
+    clubPrivateDiningImage?: string;
+    yogaImage?: string;
+    golfImage?: string;
+    sportsCourtImage?: string;
+    joggingTrackImage?: string;
+    weddingLawnImage?: string;
+    banquetHallImage?: string;
+    amphitheatreImage?: string;
+    roadsImage?: string;
+    drainageImage?: string;
+    securityImage?: string;
   };
   connectivityHighwayImage?: string;
   locationHighlights: Array<{
